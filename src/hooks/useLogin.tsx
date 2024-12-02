@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import { useSearchParams, useNavigate } from "react-router-dom";
-import { BankServiceContext } from "../services";
+import { BankServiceContext } from "../services/service";
 
 interface UseLoginResult {
     username: string;

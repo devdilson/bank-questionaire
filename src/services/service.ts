@@ -1,9 +1,14 @@
 import React from "react";
 import { Account, BackendError, Entitlement, User } from "../model/model";
 
+export interface BankService {
+    registerAccount(user: User): Promise<Account | BackendError>;
+    login(username: string, password: string): Promise<Account | BackendError>;
+    logout(): Promise<void>;
+    getCurrentUser(): Account | null;
+}
 
-export default class BankService {
-
+export default class BankServiceImpl implements BankService {
 
     private users: Map<string, Account> = new Map();
     private _currentAccount: Account | null = null;
@@ -75,7 +80,7 @@ export default class BankService {
     }
 }
 
-const service = new BankService();
+const service = new BankServiceImpl();
 const BankServiceContext = React.createContext<BankService>(service);
 
 const getBankService = () => service;

@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from 'react';
 import { Question } from '../../model/model';
 import { QuizServiceContext } from '../../services/quiz';
 import ErrorMessage from '../../components/Errors';
+import { useCurrentAccpoount } from '../../hooks/hooks';
 
 const Quiz = () => {
     const [questions, setQuestions] = useState<Question[]>([]);
@@ -9,11 +10,12 @@ const Quiz = () => {
     const [showSummary, setShowSummary] = useState(false);
     const [currentQuestion, setCurrentQuestion] = useState(0);
     const quizService = useContext(QuizServiceContext);
+    const currentUser = useCurrentAccpoount();
 
     useEffect(() => {
-        quizService.getQuestions().then((data) => {
-            setQuestions(data);
-            setAnswers([...Array(data.length)].map(() => -1));
+        quizService.getCurrentQuiz().then((quiz) => {
+            setQuestions(quiz.questions);
+            setAnswers([...Array(quiz.questions.length)].map(() => -1));
         });
     }, [quizService]);
 
@@ -30,6 +32,22 @@ const Quiz = () => {
 
     if (questions.length === 0) {
         return <ErrorMessage message="Questions not published yet, come back later." type='info' />;
+    }
+
+    const handleShowSummary = () => {
+        if (currentQuestion < questions.length - 1) {
+            setCurrentQuestion(prev => prev + 1);
+        } else {
+            setShowSummary(true);
+            if (currentUser) {
+                quizService.submitQuiz({
+                    username: currentUser.username,
+                    answers,
+                    quizId: ''
+                });
+            }
+
+        }
     }
 
     return (
@@ -70,13 +88,7 @@ const Quiz = () => {
 
                     {answers[currentQuestion] !== -1 && (
                         <button
-                            onClick={() => {
-                                if (currentQuestion < questions.length - 1) {
-                                    setCurrentQuestion(prev => prev + 1);
-                                } else {
-                                    setShowSummary(true);
-                                }
-                            }}
+                            onClick={handleShowSummary}
                             className="w-full px-4 py-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600 font-medium"
                         >
                             {currentQuestion < questions.length - 1 ? 'Next Question' : 'Show Results'}

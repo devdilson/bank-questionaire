@@ -3,7 +3,7 @@ import { QuizServiceContext } from '../../services/quiz';
 import { Question } from '../../model/model';
 import ErrorMessage from '../../components/Errors';
 import { Link } from 'react-router-dom';
-import { BankServiceContext } from '../../services';
+import { BankServiceContext } from '../../services/service';
 
 const QuizForm = () => {
     const [quizStarted, setQuizStarted] = useState(false);

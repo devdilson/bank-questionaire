@@ -30,3 +30,9 @@ export interface Quiz {
     start: string;
     end: string;
 }
+
+export interface QuizSubmission {
+    quizId: string;
+    username: string;
+    answers: number[];
+}

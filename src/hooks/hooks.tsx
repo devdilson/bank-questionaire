@@ -1,4 +1,4 @@
-import { BankServiceContext } from "../services";
+import { BankServiceContext } from "../services/service";
 import { Account } from "../model/model";
 import { useContext } from "react";
 

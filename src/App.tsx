@@ -3,7 +3,7 @@ import './App.css'
 import Layout from './components/Layout'
 import React, { useEffect } from 'react'
 import { Login } from './features/login/Login'
-import { BankServiceContext, getBankService } from './services'
+import { BankServiceContext, getBankService } from './services/service'
 import Dashboard from './features/dashboard/Dashboard'
 import { Register } from './features/register/Register'
 
