@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { QuizServiceContext } from '../../services/quiz';
 import { Question } from '../../model/model';
-import ErrorMessage from '../../components/Errors';
+import ErrorMessage from '../../components/ErrorMessage';
 import { Link } from 'react-router-dom';
 import { BankServiceContext } from '../../services/service';
 

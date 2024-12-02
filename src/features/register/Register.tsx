@@ -2,7 +2,7 @@ import { useContext, useState } from "react";
 import { BankServiceContext } from "../../services/service";
 import { useNavigate } from "react-router-dom";
 import { BackendError } from "../../model/model";
-import ErrorMessage from "../../components/Errors";
+import ErrorMessage from "../../components/ErrorMessage";
 
 
 export const Register = () => {

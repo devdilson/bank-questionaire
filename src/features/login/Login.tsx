@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import ErrorMessage from "../../components/Errors";
+import ErrorMessage from "../../components/ErrorMessage";
 import { useLogin } from "../../hooks/useLogin";
 
 export const Login = () => {

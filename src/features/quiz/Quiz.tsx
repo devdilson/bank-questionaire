@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from 'react';
 import { Question } from '../../model/model';
 import { QuizServiceContext } from '../../services/quiz';
-import ErrorMessage from '../../components/Errors';
+import ErrorMessage from '../../components/ErrorMessage';
 import { useCurrentAccpoount } from '../../hooks/hooks';
 
 const Quiz = () => {
