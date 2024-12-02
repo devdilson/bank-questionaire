@@ -1,8 +1,8 @@
 import { useContext, useState } from "react";
-import { BankServiceContext } from "../services";
+import { BankServiceContext } from "../../services";
 import { useNavigate } from "react-router-dom";
-import { BackendError } from "../model";
-import ErrorMessage from "../components/Errors";
+import { BackendError } from "../../model";
+import ErrorMessage from "../../components/Errors";
 
 
 export const Register: React.FC<{}> = ({ }) => {
@@ -33,7 +33,7 @@ export const Register: React.FC<{}> = ({ }) => {
     }
 
     return (
-        <div className="min-h-screen flex items-center justify-center bg-gray-50 p-4">
+        <div className="min-h-screen flex items-center">
             <div className="bg-white p-8 rounded-lg shadow-lg w-96 space-y-6">
                 <div className="text-center">
                     <h2 className="text-3xl font-bold text-gray-900">Open Bank Account</h2>

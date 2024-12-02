@@ -3,9 +3,9 @@ import './App.css'
 import Layout from './components/Layout'
 import React, { useEffect } from 'react'
 import { Login } from './features/login/Login'
-import { Register } from './features/Register'
 import { BankServiceContext, getBankService } from './services'
 import Dashboard from './features/dashboard/Dashboard'
+import { Register } from './features/register/Register'
 
 interface WrapperProps {
   children: React.ReactElement;
@@ -37,7 +37,7 @@ function App() {
           <Route path="/" element={<Layout><Login /></Layout>} > </Route>
           <Route path="/login" element={<Layout><Login /></Layout>} >
           </Route>
-          <Route path="/register" element={<AuthenticatedElement><Register /></AuthenticatedElement>}>
+          <Route path="/register" element={<Layout><Register /></Layout>}>
           </Route>
           <Route path="/dashboard" element={<AuthenticatedElement><Dashboard /></AuthenticatedElement>}>
           </Route>
