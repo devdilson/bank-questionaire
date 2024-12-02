@@ -6,11 +6,13 @@ interface LayoutProps {
 }
 
 const Layout: React.FC<LayoutProps> = ({ children }) => (
-    <div className="min-h-screen">
-        <Header/>
-        <div className="flex-1 flex items-center justify-center">
-            {children}
-        </div>
+    <div className="min-h-screen flex flex-col">
+        <Header />
+        <main className="flex-2 mx-auto flex items-center justify-center">
+            <div className="w-full">
+                {children}
+            </div>
+        </main>
         <Footer />
     </div>
 );

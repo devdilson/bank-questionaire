@@ -1,11 +1,13 @@
 import { useContext } from "react";
 import { BankServiceContext } from "../services";
+import { useNavigate } from "react-router-dom";
 
 interface HeaderProps {
 
 }
 const Header: React.FC<HeaderProps> = ({ }) => {
     const bankService = useContext(BankServiceContext);
+    const navigate = useNavigate();
 
     const account = bankService.getCurrentUser();
 
@@ -22,6 +24,11 @@ const Header: React.FC<HeaderProps> = ({ }) => {
                 </div>
             )}
         </div>
+        {account && <a href="#" onClick={() => {
+            bankService.logout();
+            navigate("/login");
+
+        }}>Log out</a>}
     </header>
 }
 

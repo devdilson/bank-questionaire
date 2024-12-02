@@ -9,15 +9,20 @@ export default class BankService {
     private _currentAccount: Account | null = null;
 
     constructor() {
-        this.createBranchManagerAccount();
+        this.createTestAccounts();
     }
 
-    private async createBranchManagerAccount() {
+    private async createTestAccounts() {
         await this.registerAccount({
             username: "admin",
             password: "admin",
         });
-        this.users.get("admin")!.entitlement = [Entitlement.BranchEmployee, Entitlement.User];
+        this.users.get("admin")!.entitlement = [Entitlement.BranchEmployeeAdmin, Entitlement.BranchEmployeeAdmin];
+        await this.registerAccount({
+            username: "user",
+            password: "user",
+        });
+        this.users.get("user")!.entitlement = [Entitlement.BranchEmployee];
     }
 
 
@@ -33,7 +38,7 @@ export default class BankService {
         const account: Account = {
             ...user,
             id: userId,
-            entitlement: [Entitlement.User],
+            entitlement: [Entitlement.BranchEmployee],
         };
         this.users.set(user.username, account);
         return Promise.resolve(account);
@@ -75,4 +80,6 @@ const BankServiceContext = React.createContext<BankService>(service);
 
 const getBankService = () => service;
 
-export { BankServiceContext, getBankService }
+
+
+export { BankServiceContext, getBankService };

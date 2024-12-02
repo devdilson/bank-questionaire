@@ -9,12 +9,18 @@ export interface Account extends User {
 }
 
 export enum Entitlement {
+    BranchEmployeeAdmin = "BranchEmployeeAdmin",
     BranchEmployee = "BranchEmployee",
-    User = "User",
 }
 
 export interface BackendError {
     code: string;
     message: string;
     status?: number;
+}
+
+export interface Question {
+    question: string;
+    options: string[];
+    correct: number;
 }

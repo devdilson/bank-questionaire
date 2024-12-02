@@ -1,8 +1,8 @@
 import { useContext, useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { Link } from "react-router-dom";
-import { BankServiceContext } from "../services";
-import ErrorMessage from "../components/Errors";
+import { BankServiceContext } from "../../services";
+import ErrorMessage from "../../components/Errors";
 
 export const Login: React.FC<{}> = ({ }) => {
     const [username, setUsername] = useState("");
