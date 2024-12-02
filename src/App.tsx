@@ -1,4 +1,4 @@
-import { BrowserRouter, HashRouter, Route, Routes, useNavigate } from 'react-router-dom'
+import { HashRouter, Route, Routes, useNavigate } from 'react-router-dom'
 import './App.css'
 import Layout from './components/Layout'
 import React, { useEffect } from 'react'
