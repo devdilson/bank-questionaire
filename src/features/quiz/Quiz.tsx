@@ -15,7 +15,7 @@ const Quiz = () => {
             setQuestions(data);
             setAnswers([...Array(data.length)].map(() => -1));
         });
-    }, []);
+    }, [quizService]);
 
     const handleAnswer = (optionIndex: number) => {
         const newAnswers = [...answers];

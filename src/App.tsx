@@ -20,7 +20,7 @@ function AuthenticatedElement({ children }: WrapperProps) {
     if (!bankService.getCurrentUser()) {
       navigate('/login');
     }
-  }, []);
+  }, [bankService, navigate]);
 
   return <BankServiceContext.Provider value={getBankService()}>
     <Layout >{childrenWithProps}</Layout>;

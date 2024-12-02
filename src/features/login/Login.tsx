@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import ErrorMessage from "../../components/Errors";
 import { useLogin } from "../../hooks/useLogin";
 
-export const Login: React.FC<{}> = () => {
+export const Login = () => {
     const {
         username,
         password,
@@ -65,11 +65,13 @@ export const Login: React.FC<{}> = () => {
 
                 <div className="pt-4 border-t border-gray-200">
                     <Link to="/register">
-                        <button className="w-full bg-gray-50 text-gray-700 py-3 rounded-lg hover:bg-gray-100 transition-colors font-medium border border-gray-200">
+                        <button className="w-full bg-gray-50 text-gray-700 py-3 rounded-lg">
                             Create Account
                         </button>
                     </Link>
                 </div>
+
+
             </div>
         </div>
     );

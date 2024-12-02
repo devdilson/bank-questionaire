@@ -5,7 +5,7 @@ import { BackendError } from "../../model/model";
 import ErrorMessage from "../../components/Errors";
 
 
-export const Register: React.FC<{}> = ({ }) => {
+export const Register = () => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState<BackendError | null>(null);
@@ -17,7 +17,7 @@ export const Register: React.FC<{}> = ({ }) => {
     const createAccount = async () => {
         setError(null)
         if (username && password) {
-            const result = await bankService.registerAccount({
+            await bankService.registerAccount({
                 username: username.toLocaleLowerCase(),
                 password: password.toLocaleLowerCase(),
             }).catch((error) => {
@@ -26,9 +26,7 @@ export const Register: React.FC<{}> = ({ }) => {
                 }
             });
 
-            if (result) {
-                navigate("/login?showLoginMessage=true")
-            }
+            navigate("/login?showLoginMessage=true")
         }
     }
 

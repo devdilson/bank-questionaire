@@ -2,13 +2,10 @@ import { useContext } from "react";
 import { BankServiceContext } from "../services";
 import { useNavigate } from "react-router-dom";
 
-interface HeaderProps {
 
-}
-const Header: React.FC<HeaderProps> = ({ }) => {
+const Header = () => {
     const bankService = useContext(BankServiceContext);
     const navigate = useNavigate();
-
     const account = bankService.getCurrentUser();
 
     return <header className="bg-white shadow-sm p-4 fixed top-0 left-0 right-0 flex justify-between items-center">

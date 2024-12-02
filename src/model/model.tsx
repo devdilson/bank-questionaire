@@ -24,3 +24,9 @@ export interface Question {
     options: string[];
     correct: number;
 }
+
+export interface Quiz {
+    questions: Question[];
+    start: string;
+    end: string;
+}

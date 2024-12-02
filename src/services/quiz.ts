@@ -1,20 +1,19 @@
 import React from "react";
-import { Question } from "../model/model";
+import { Question, Quiz } from "../model/model";
 
 
 
 
 export class QuizService {
-    private quizzes: Question[] = [];
 
-
-    async createQuestion(quiz: Question): Promise<Question> {
-        this.quizzes.push(quiz);
-        return quiz;
-    }
+    private currentQuiz: Quiz | null = null;
 
     async getQuestions(): Promise<Question[]> {
-        return this.quizzes;
+        return this.currentQuiz?.questions || [];
+    }
+
+    createQuiz(quiz: Quiz) {
+        this.currentQuiz = quiz
     }
 }
 

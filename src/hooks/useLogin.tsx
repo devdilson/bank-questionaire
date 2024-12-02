@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useContext, useState } from "react";
 import { useSearchParams, useNavigate } from "react-router-dom";
 import { BankServiceContext } from "../services";
 
@@ -29,9 +29,13 @@ export const useLogin = (): UseLoginResult => {
         try {
             await bankService.login(username, password);
             navigate("/dashboard");
+            // eslint-disable-next-line
         } catch (err: any) {
             searchParams.delete("showLoginMessage");
-            setError(err.message || "Failed to login");
+            if ("message" in err) {
+                setError(err.message || "Failed to login");
+            }
+
         }
     };
 
