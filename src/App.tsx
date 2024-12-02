@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes, useNavigate } from 'react-router-dom'
+import { BrowserRouter, HashRouter, Route, Routes, useNavigate } from 'react-router-dom'
 import './App.css'
 import Layout from './components/Layout'
 import React, { useEffect } from 'react'
@@ -32,7 +32,7 @@ function App() {
 
   return (
     <>
-      <BrowserRouter>
+      <HashRouter>
         <Routes>
           <Route path="/" element={<Layout><Login /></Layout>} > </Route>
           <Route path="/login" element={<Layout><Login /></Layout>} >
@@ -42,7 +42,7 @@ function App() {
           <Route path="/dashboard" element={<AuthenticatedElement><Dashboard /></AuthenticatedElement>}>
           </Route>
         </Routes>
-      </BrowserRouter>
+      </HashRouter>
     </>
   )
 }
