@@ -3,9 +3,10 @@ import React from 'react';
 interface ErrorComponentProps {
     message: string;
     type?: 'error' | 'success' | 'warning' | 'info';
+    children?: React.ReactNode;
 }
 
-const ErrorMessage: React.FC<ErrorComponentProps> = ({ message, type = 'info' }) => {
+const ErrorMessage: React.FC<ErrorComponentProps> = ({ message, type = 'info', children }) => {
     const styles = {
         error: 'bg-red-50 text-red-700 border-red-200',
         success: 'bg-green-50 text-green-700 border-green-200',
@@ -16,6 +17,9 @@ const ErrorMessage: React.FC<ErrorComponentProps> = ({ message, type = 'info' })
     return (
         <div className={`p-4 rounded-md border ${styles[type]}`}>
             {message}
+            <div>
+                {children}
+            </div>
         </div>
     );
 };

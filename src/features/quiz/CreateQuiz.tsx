@@ -2,6 +2,8 @@ import React, { useContext, useState } from 'react';
 import { QuizServiceContext } from '../../services/quiz';
 import { Question } from '../../model/model';
 import ErrorMessage from '../../components/Errors';
+import { Link } from 'react-router-dom';
+import { BankServiceContext } from '../../services';
 
 const QuizForm = () => {
     const [quizStarted, setQuizStarted] = useState(false);
@@ -14,6 +16,7 @@ const QuizForm = () => {
     const [currentCorrect, setCurrentCorrect] = useState<number>(0);
 
     const quizService = useContext(QuizServiceContext);
+    const bankService = useContext(BankServiceContext);
 
     const handleOptionChange = (index: number, value: string) => {
         const newOptions = [...currentOptions];
@@ -62,7 +65,12 @@ const QuizForm = () => {
 
 
     if (quizSubmited) {
-        return <ErrorMessage message="Quiz submitted successfully" type='success' />;
+        return <div>
+            <ErrorMessage message="Quiz submitted successfully" type='success'>
+                <Link to="/login" className="text-blue-600" onClick={() => bankService.logout()}>Go back to Login</Link>
+            </ErrorMessage>
+
+        </div>
     }
 
 
