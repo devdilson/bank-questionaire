@@ -1,6 +1,6 @@
-import { Entitlement } from "../../model";
+import { Entitlement } from "../../model/model";
 import Quiz from "../quiz/Quiz";
-import { useCurrentAccpoount as useCurrentAccount } from "../hooks";
+import { useCurrentAccpoount as useCurrentAccount } from "../../hooks/hooks";
 import CreateQuiz from "../quiz/CreateQuiz";
 
 

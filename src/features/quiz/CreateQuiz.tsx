@@ -19,7 +19,7 @@ const QuizForm = () => {
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
-        quizService.createQuiz({ question, options, correct });
+        quizService.createQuestion({ question, options, correct });
         resetForm();
     };
 

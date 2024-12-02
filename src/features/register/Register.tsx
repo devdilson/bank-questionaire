@@ -1,7 +1,7 @@
 import { useContext, useState } from "react";
 import { BankServiceContext } from "../../services";
 import { useNavigate } from "react-router-dom";
-import { BackendError } from "../../model";
+import { BackendError } from "../../model/model";
 import ErrorMessage from "../../components/Errors";
 
 

@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from 'react';
-import { Question } from '../../model';
+import { Question } from '../../model/model';
 import { QuizServiceContext } from '../../services/quiz';
 import ErrorMessage from '../../components/Errors';
 
@@ -11,7 +11,7 @@ const Quiz = () => {
     const quizService = useContext(QuizServiceContext);
 
     useEffect(() => {
-        quizService.getQuizzes().then((data) => {
+        quizService.getQuestions().then((data) => {
             setQuestions(data);
             setAnswers([...Array(data.length)].map(() => -1));
         });

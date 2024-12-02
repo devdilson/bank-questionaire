@@ -1,32 +1,17 @@
-import { useContext, useState } from "react";
-import { useNavigate, useSearchParams } from "react-router-dom";
 import { Link } from "react-router-dom";
-import { BankServiceContext } from "../../services";
 import ErrorMessage from "../../components/Errors";
+import { useLogin } from "../../hooks/useLogin";
 
-export const Login: React.FC<{}> = ({ }) => {
-    const [username, setUsername] = useState("");
-    const [password, setPassword] = useState("");
-    const [loginError, setError] = useState<string>("");
-    const [searchParams] = useSearchParams();
-    const navigate = useNavigate();
-    const showLoginMessage = searchParams.get("showLoginMessage");
-
-    const bankService = useContext(BankServiceContext);
-
-    const handleSubmit = async (e: React.FormEvent) => {
-        e.preventDefault();
-        setError("");
-
-        try {
-            await bankService.login(username, password);
-            navigate("/dashboard");
-        } catch (err: any) {
-            searchParams.delete("showLoginMessage");
-            setError(err.message || "Failed to login");
-        }
-    };
-
+export const Login: React.FC<{}> = () => {
+    const {
+        username,
+        password,
+        loginError,
+        setUsername,
+        setPassword,
+        handleSubmit,
+        showLoginMessage
+    } = useLogin();
 
     return (
         <div className="min-h-screen flex items-center">

@@ -1,5 +1,5 @@
 import React from "react";
-import { Account, BackendError, Entitlement, User } from "../model";
+import { Account, BackendError, Entitlement, User } from "../model/model";
 
 
 export default class BankService {

@@ -1,5 +1,5 @@
 import React from "react";
-import { Question } from "../model";
+import { Question } from "../model/model";
 
 
 
@@ -8,12 +8,12 @@ export class QuizService {
     private quizzes: Question[] = [];
 
 
-    async createQuiz(quiz: Question): Promise<Question> {
+    async createQuestion(quiz: Question): Promise<Question> {
         this.quizzes.push(quiz);
         return quiz;
     }
 
-    async getQuizzes(): Promise<Question[]> {
+    async getQuestions(): Promise<Question[]> {
         return this.quizzes;
     }
 }
