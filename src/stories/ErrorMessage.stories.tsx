@@ -1,5 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import ErrorMessage from '../components/ErrorMessage'
+import { within, expect } from '@storybook/test';
+
 
 const meta = {
     title: 'Components/ErrorMessage',
@@ -8,7 +10,7 @@ const meta = {
         layout: 'centered',
         docs: {
             description: {
-                component: 'A versatile message component for displaying different types of notifications and alerts.'
+                component: 'A message component of notifications and alerts.'
             }
         }
     },
@@ -105,3 +107,35 @@ export const ComplexContent: Story = {
         )
     }
 };
+
+export const TestRendering: Story = {
+    args: {
+        message: 'Test message',
+        type: 'info'
+    },
+    play: async ({ canvasElement }) => {
+        const canvas = within(canvasElement);
+
+        const messageElement = canvas.getByText('Test message');
+        await expect(messageElement).toBeInTheDocument();
+
+        const container = messageElement.closest('div');
+        expect(container).toHaveClass('p-4', 'rounded-md', 'border');
+    }
+};
+
+
+export const TestWithChildren: Story = {
+    args: {
+        message: 'Parent message',
+        type: 'info',
+        children: <div data-testid="child-content">Child content</div>
+    },
+    play: async ({ canvasElement }) => {
+        const canvas = within(canvasElement);
+
+        await expect(canvas.getByText('Parent message')).toBeInTheDocument();
+        await expect(canvas.getByTestId('child-content')).toBeInTheDocument();
+    }
+};
+
