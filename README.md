@@ -1,3 +1,3 @@
 # Bank Questionaire
 
-Just a bank questionaire, available [here](https://bank-questionaire.pages.dev/).
+Just a bank questionaire, deployed at [here](https://bank-questionaire.pages.dev/).
